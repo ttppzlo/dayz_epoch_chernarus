@@ -191,6 +191,9 @@ Dayz_GUI_B = 0.26; // -0.26
 
 //Player self-action handles
 dayz_resetSelfActions = {
+	s_givemoney_dialog = -1;
+	s_bank_dialog = -1;
+	s_bank_dialog2 = -1;
 	s_player_fire =			-1;
 	s_player_cook =			-1;
 	s_player_boil =			-1;

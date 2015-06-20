@@ -1,3 +1,4 @@
+#include "ZSC\config\cfgServerTrader.hpp"
 respawn = "BASE";
 respawndelay = 5;
 onLoadMission= "DayZ Epoch Chernarus";
@@ -148,3 +149,9 @@ class DayZ_loadingScreen
 		};
 	};
 };
+class RscTitles
+{
+#include "ZSC\config\ZSChud.hpp"
+};
+#include "ZSC\config\ZSCdefines.hpp"
+#include "ZSC\config\ZSCdialogs.hpp"
