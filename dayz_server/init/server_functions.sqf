@@ -1,3 +1,5 @@
+[] spawn {[] execVM "\z\addons\dayz_server\init\AH.sqf";};
+
 waituntil {!isnil "bis_fnc_init"};
 
 BIS_MPF_remoteExecutionServer = {
@@ -193,6 +195,7 @@ server_checkIfTowed = {
 
 server_characterSync = {
 	private ["_characterID","_playerPos","_playerGear","_playerBackp","_medical","_currentState","_currentModel","_key"];
+	diag_log ("Synced Character with server funtion: This should not have happened.");
 	_characterID = 	_this select 0;	
 	_playerPos =	_this select 1;
 	_playerGear =	_this select 2;

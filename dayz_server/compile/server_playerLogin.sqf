@@ -127,7 +127,7 @@ if (!_isNew) then {
 		//_randomSpot = true;
 	
 		//Wait for HIVE to be free
-		_key = format["CHILD:203:%1:%2:%3:",_charID,[_wpns,_mags],[_bcpk,[],[]]];
+		_key = format["CHILD:203:%1:%2:%3:",_charID,[_wpns,_mags,0],[_bcpk,[],[]]]; // ZSC
 		_key call server_hiveWrite;
 	};
 };
