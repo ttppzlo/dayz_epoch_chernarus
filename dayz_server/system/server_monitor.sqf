@@ -17,13 +17,13 @@ if(isnil "MaxVehicleLimit") then {
 };
 
 if(isnil "MaxDynamicDebris") then {
-	MaxDynamicDebris = 100;
+	MaxDynamicDebris = 25;
 };
 if(isnil "MaxAmmoBoxes") then {
 	MaxAmmoBoxes = 3;
 };
 if(isnil "MaxMineVeins") then {
-	MaxMineVeins = 50;
+	MaxMineVeins = 0;
 };
 // Custon Configs End
 
