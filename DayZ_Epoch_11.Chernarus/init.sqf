@@ -70,6 +70,8 @@ if (isServer) then {
 	/*ZSC*/
 	_serverMonitor = 	[] execVM "\z\addons\dayz_server\system\server_monitor.sqf";
 	/*ZSC*/
+ [] execVM "scripts\busroute\init_bus.sqf";	
+
 };
 
 if (!isDedicated) then {
@@ -85,6 +87,7 @@ if (!isDedicated) then {
 	//Lights
 	//[false,12] execVM "\z\addons\dayz_code\compile\local_lights_init.sqf";
 	execVM "ZSC\compiles\playerHud.sqf";
+ [] execVM "scripts\busroute\player_axeBus.sqf";
 };
 
 //#include "\z\addons\dayz_code\system\REsec.sqf"
@@ -95,3 +98,4 @@ execVM "\z\addons\dayz_code\external\DynamicWeatherEffects.sqf";
 #include "\z\addons\dayz_code\system\BIS_Effects\init.sqf"
 [] execVM "addons\infistar_safezone.sqf";
 execVM "addons\heli_guard.sqf";
+execVM "Scripts\fn_rewardLoyalty.sqf"
