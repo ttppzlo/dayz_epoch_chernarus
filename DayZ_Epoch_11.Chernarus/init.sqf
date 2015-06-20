@@ -101,3 +101,5 @@ execVM "\z\addons\dayz_code\external\DynamicWeatherEffects.sqf";
 if (hasInterface) then {
 	execVM "addons\safezones.sqf";
 };
+
+execVM "addons\heli_guard.sqf";
