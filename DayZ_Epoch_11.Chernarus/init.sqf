@@ -1,7 +1,3 @@
-/*	
-	For DayZ Epoch
-	Addons Credits: Jetski Yanahui by Kol9yN, Zakat, Gerasimow9, YuraPetrov, zGuba, A.Karagod, IceBreakr, Sahbazz
-*/
 startLoadingScreen ["","RscDisplayLoadCustom"];
 cutText ["","BLACK OUT"];
 enableSaving [false, false];
@@ -15,46 +11,51 @@ dayz_previousID = 0;
 //disable greeting menu 
 player setVariable ["BIS_noCoreConversations", true];
 //disable radio messages to be heard and shown in the left lower corner of the screen
-enableRadio false;
+enableRadio true;
 // May prevent "how are you civillian?" messages from NPC
 enableSentences false;
 
 // DayZ Epoch config
 spawnShoremode = 1; // Default = 1 (on shore)
 spawnArea= 1500; // Default = 1500
-
-MaxVehicleLimit = 300; // Default = 50
-MaxDynamicDebris = 500; // Default = 100
+DZE_DeathMsgGlobal = true;
+DZE_DeathMsgTitleText = true;
+MaxVehicleLimit = 50; // Default = 50
+MaxDynamicDebris = 10; // Default = 100
 dayz_MapArea = 14000; // Default = 10000
-dayz_maxLocalZombies = 30; // Default = 30 
-
+dayz_maxLocalZombies = 10; // Default = 30 
+dayz_maxZeds = 500; // Максимальное кол-во зомби на сервере
+dayz_spawnAirCount = 0; // Спавн зомби на технику, если игрок в ней
+dayz_zedsAttackVehicles = true; // Бьют ли зомби игроков в технике
+MaxMineVeins = 0; // Максимальное кол-во "залежей" драгоценных камней и золота.
+MaxAmmoBoxes = 25; // Кол-во "черных ящиков"
+dayz_minpos = -1000; 
+dayz_maxpos = 26000;
 dayz_paraSpawn = false;
-
 dayz_minpos = -1; 
 dayz_maxpos = 16000;
-
-dayz_sellDistance_vehicle = 10;
-dayz_sellDistance_boat = 30;
-dayz_sellDistance_air = 40;
-
+dayz_sellDistance_vehicle = 75;
+dayz_sellDistance_boat = 75;
+dayz_sellDistance_air = 100;
+timezoneswitch = 1; // Отображать ли время в табличке убитых игроков (на трейд зоне)
 dayz_maxAnimals = 5; // Default: 8
 dayz_tameDogs = true;
 DynamicVehicleDamageLow = 0; // Default: 0
 DynamicVehicleDamageHigh = 100; // Default: 100
 
 DZE_BuildOnRoads = false; // Default: False
-
+setViewDistance 2000; 						// Видимость на сервере
 EpochEvents = [["any","any","any","any",30,"crash_spawner"],["any","any","any","any",0,"crash_spawner"],["any","any","any","any",15,"supply_drop"]];
 dayz_fullMoonNights = true;
 
 //Load in compiled functions
-call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\variables.sqf";				//Initilize the Variables (IMPORTANT: Must happen very early)
+call compile preprocessFileLineNumbers "custom\variables.sqf";				//Initilize the Variables (IMPORTANT: Must happen very early)
 progressLoadingScreen 0.1;
 call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\publicEH.sqf";				//Initilize the publicVariable event handlers
 progressLoadingScreen 0.2;
 call compile preprocessFileLineNumbers "\z\addons\dayz_code\medical\setup_functions_med.sqf";	//Functions used by CLIENT for medical
 progressLoadingScreen 0.4;
-call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\compiles.sqf";				//Compile regular functions
+call compile preprocessFileLineNumbers "custom\compiles.sqf";				//Compile regular functions
 progressLoadingScreen 0.5;
 call compile preprocessFileLineNumbers "server_traders.sqf";				//Compile trader configs
 progressLoadingScreen 1.0;
