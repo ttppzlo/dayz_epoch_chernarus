@@ -16,8 +16,6 @@ enableSentences false;
 spawnShoremode = 1; // Default = 1 (on shore)
 spawnArea= 1500; // Default = 1500
 DZE_BuildingLimit = 9999
-DZE_DamageBeforeMaint = 0,00; вставляем  DZE_SelfTransfuse = true;
-DZE_selfTransfuse_Values = [12000, 15, 300];
 DZE_DeathMsgGlobal = true;
 DZE_DeathMsgTitleText = true;
 DZE_GodModeBase = false;
@@ -79,8 +77,7 @@ if (!isDedicated) then {
 	0 fadeSound 0;
 	waitUntil {!isNil "dayz_loadScreenMsg"};
 	dayz_loadScreenMsg = (localize "STR_AUTHENTICATING");
-	_nil = [] execVM "custom\remote_messages.sqf";
-	
+[] ExecVM "addons\loadout.sqf";	
 	//Run the player monitor
 	_id = player addEventHandler ["Respawn", {_id = [] spawn player_death;}];
 	_playerMonitor = 	[] execVM "\z\addons\dayz_code\system\player_monitor.sqf";	

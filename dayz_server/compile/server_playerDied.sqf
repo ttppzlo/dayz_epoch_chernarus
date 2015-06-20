@@ -35,6 +35,10 @@ if ((typeName _killer) != "STRING") then
 		_loc_message = format["PKILL: %1 был убит игроком %2 из оружия %3 с растояния %4 м", _victimName, _killerName, _weapon, _distance];
 	};
 
+	if(DZE_DeathMsgGlobal) then {
+		[nil, nil, rspawn, [_killer, _message], { (_this select 0) globalChat (_this select 1) }] call RE;
+	};	
+	
 	diag_log _loc_message;
 
 	if(DZE_DeathMsgGlobal) then {
