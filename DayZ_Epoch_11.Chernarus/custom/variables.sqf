@@ -251,9 +251,6 @@ dayz_resetSelfActions = {
 	s_player_heli_lift = -1;
 	s_player_heli_detach = -1;
 	s_player_lockUnlock_crtl = -1;
-	s_givemoney_dialog = -1;
-	s_bank_dialog = -1;
-	s_bank_dialog2 = -1;
 };
 call dayz_resetSelfActions;
 
