@@ -157,3 +157,5 @@ class RscTitles
 };
 #include "ZSC\config\ZSCdefines.hpp"
 #include "ZSC\config\ZSCdialogs.hpp"
+#include "zupa\advancedTrading\ZSCdefines.hpp" // если у вас нет ZSC 3.0
+#include "zupa\advancedTrading\advancedTrading.hpp"
