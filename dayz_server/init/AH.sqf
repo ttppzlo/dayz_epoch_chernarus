@@ -5807,6 +5807,10 @@ PV_AdminMainCode =
 		adminadd = adminadd + ["  Поменять Человечность (через чат)",changeHumanity,"0","0","0","1",[0,0.8,1,1]];
 		adminadd = adminadd + ["  Дать игроку 2500 Человечности",adminHumanityPlus,"0","0","0","1",[0,0.8,1,1]];
 		adminadd = adminadd + ["  Отнять у игрока 2500 Человечности",adminHumanityMinus,"0","0","0","1",[0,0.8,1,1]];
+===========================================================================        
+        adminadd = adminadd + ["|  Дать Денег",admingivecoins,"0","0","0","1",[0,0.8,1,1]];
+        adminadd = adminadd + ["|  Забрать Денег",admintakecoins,"0","0","0","1",[0,0.8,1,1]];
+============================================================================
 		adminadd = adminadd + ["  Клонировать",adminCloneTarget,"0","0","0","1",[0,0.8,1,1]];
 		adminadd = adminadd + ["-","","0","1","0","0",[]];
 		adminadd = adminadd + ["  Дать патроны",admin_give_ammo,"0","0","0","1",[0,0.8,1,1]];
@@ -9829,6 +9833,81 @@ PV_AdminMainCode =
 			};
 		} forEach playableUnits;
 	};
+============================================================================
+    admingivecoins =
+    {
+        disableSerialization;
+        _xe = _removecoins;
+        {if (name _x == _this select 0) exitWith{_xe = _x;};} forEach playableUnits;
+        if (isNull _plr) exitWith 
+        {
+            systemchat 'Выберите игрока!';
+        };
+        if (isNull findDisplay 24) exitWith 
+        {
+            systemchat 'Откройте чат и введите количество Денег который вы хотите дать, а потом двойной клик ДАТЬ ДЕНЕГ!';
+        };
+        _chat = (findDisplay 24) displayCtrl 101;
+        _txt =     ctrlText _chat;
+        _num =     0;
+        if (_txt != '') then
+        {
+            _num = parseNumber _txt;
+            if (typeName _num != 'SCALAR') then {systemchat 'ВВЕДИТЕ ЗНАЧЕНИЕ!';};
+            (findDisplay 24) closeDisplay 0;
+        };
+        
+        _wealth = _xe getVariable['CashMoney',0];
+        _xe setVariable['CashMoney',_wealth+_num, true];
+        PVDZE_plr_Save = [_xe,(magazines _xe),true,true] ;
+        publicVariableServer 'PVDZE_plr_Save';
+        _xe setVariable ['moneychanged',1,true];
+        hint format['Даем игроку %1 %2 Денег!',_this select 0,_num];
+        
+        _sl = format['Игрок %1 дал %2 Денег игроку %3 (Админ Функция)',name player,_num,_this select 0];
+        PVAH_WriteLogReq = [player,_sl];
+        publicVariableServer 'PVAH_WriteLogReq';
+    };
+    admintakecoins =
+    {
+        disableSerialization;
+        _xe = objNull;    
+        {if(name _x == _this select 0) exitWith {_xe = _x;};} forEach playableUnits;
+        if(isNull _plr) exitWith {
+            systemchat 'Выберите игрока!';
+        };
+        if(isNull findDisplay 24) exitWith {
+            systemchat 'открыть чат, введите объем Денег, который вы хотите забрать, а потом двойной клик на ЗАБРАТЬ ДЕНЕГ!';
+        };
+        _chat = (findDisplay 24) displayCtrl 101;
+        _txt = ctrlText _chat;
+        _num = 0;
+        if(_txt != '') then {
+        _num = parseNumber _txt;
+            if(typeName _num != 'SCALAR') then {systemchat 'ВВЕДИТЕ ЗНАЧЕНИЕ!';};
+            (findDisplay 24) closeDisplay 0;
+        };
+        
+        _wealth = _xe getVariable['CashMoney',0];
+        _removecoins = _num;
+        if (_wealth <= _num) then {
+            _removecoins = _wealth;
+        } else {
+            _removecoins = _num;
+        };
+        _newwealth = _wealth-_removecoins;
+        if (_newwealth <= 0) then { _newwealth = 0; };
+        _xe setVariable['CashMoney',_newwealth, true];
+        PVDZE_plr_Save = [_xe,(magazines _xe),true,true] ;
+        publicVariableServer 'PVDZE_plr_Save';
+        _xe setVariable ['moneychanged',1,true];    
+        hint format['Забераем у игрока %1 %2 Денеги!',_this select 0,_num];
+        
+        _sl = format['%1 Забрал %2 монеты из %3',name player,_removecoins,_this select 0];
+        PVAH_WriteLogReq = [player,_sl];
+        publicVariableServer 'PVAH_WriteLogReq';
+    };
+============================================================================
 	adminCloneTarget =
 	{
 		_name = _this select 0;
