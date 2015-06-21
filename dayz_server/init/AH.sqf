@@ -1196,7 +1196,7 @@ publicVariable '"+_randvar28+"';
 						_mytime = 		0;
 						while {1 == 1} do {_mytime = _mytime + 1;if(_mytime >= 20) exitWith {};if((!isNil 'dayz_animalCheck') || (!isNil 'dayz_medicalH') || (!isNil 'dayz_slowCheck') || (!isNil 'dayz_gui')) exitWith {};uiSleep 1;};
 						
-						lbsetpicture = 				'no';	createDiaryRecord =		'no';	createTask =			'no';
+						createDiaryRecord =		'no';	createTask =			'no';
 						createSimpleTask =			'no';	buttonSetAction	=		'no';	processDiaryLink =		'no';	createDiaryLink =		'no';
 						lbSetData =					'no';	createTeam	=			'no';	exec =					'no';	addGroupIcon =			'no';
 						setGroupIconParams =		'no';	addWeaponCargo =		'no';	addMagazineCargo =		'no';	setVehicleAmmoDef =		'no';
@@ -1220,7 +1220,7 @@ publicVariable '"+_randvar28+"';
 									publicVariableServer '"+_randvar10+"';
 								};
 								true
-							} count ['lbsetpicture','createDiaryRecord','createTask','createSimpleTask','buttonSetAction','processDiaryLink','createDiaryLink','lbSetData','createTeam',
+							} count ['createDiaryRecord','createTask','createSimpleTask','buttonSetAction','processDiaryLink','createDiaryLink','lbSetData','createTeam',
 							'exec','addGroupIcon','setGroupIconParams','addWeaponCargo','addMagazineCargo','setVehicleAmmoDef','setWeaponReloadingTime','addMPEventHandler','createVehicleLocal',
 							'inputAction','setWaypointStatements','addWaypoint','setMarkerBrushLocal','loadFile','rcallVarcode','saveStatus','loadStatus','saveVar','drawIcon','setMarkerText',
 							'setMarkerType','markerText','setMarkerAlpha','setMarkerBrush','setMarkerColor','setMarkerDir','setMarkerPos','setMarkerShape','setMarkerSize','createMarker',
