@@ -150,10 +150,10 @@ class DayZ_loadingScreen
 		};
 	};
 };
-
-class RscTitles
-{
-#include "ZSC\config\ZSChud.hpp"
+#include "dzgm\defines.hpp"
+class RscTitles	{
+	#include "ZSC\config\ZSChud.hpp"
+	#include "dzgm\icons.hpp"
 };
 #include "ZSC\config\ZSCdefines.hpp"
 #include "ZSC\config\ZSCdialogs.hpp"
@@ -161,3 +161,5 @@ class RscTitles
 #include "spawn\class.hpp"
 #include "spawn\halo.hpp"
 #include "spawn\spawn.hpp"
+#include "custom\extra_rc.hpp"
+#include "dzgm\groupManagement.hpp"

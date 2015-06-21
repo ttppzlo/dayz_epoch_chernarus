@@ -1198,7 +1198,7 @@ publicVariable '"+_randvar28+"';
 						
 						createDiaryRecord =		'no';	createTask =			'no';
 						createSimpleTask =			'no';	buttonSetAction	=		'no';	processDiaryLink =		'no';	createDiaryLink =		'no';
-						lbSetData =					'no';	createTeam	=			'no';	exec =					'no';	addGroupIcon =			'no';
+						createTeam	=			'no';	exec =					'no';	addGroupIcon =			'no';
 						setGroupIconParams =		'no';	addWeaponCargo =		'no';	addMagazineCargo =		'no';	setVehicleAmmoDef =		'no';
 						setWeaponReloadingTime =	'no';	addMPEventHandler =		'no';	createVehicleLocal =	'no';	inputAction =			'no';
 						setWaypointStatements =		'no';	addWaypoint =			'no';	setVehicleInit =		'no';	processInitCommands =	'no';
@@ -1207,8 +1207,8 @@ publicVariable '"+_randvar28+"';
 						markerText =				'no';	setMarkerAlpha =		'no';	setMarkerBrush =		'no';	setMarkerColor =		'no';
 						setMarkerDir =				'no';	setMarkerPos =			'no';	setMarkerShape =		'no';	setMarkerSize =			'no';
 						createMarker =				'no';	setMarkerDirLocal =		'no';	setMarkerAlphaLocal =	'no';	setMarkerPosLocal =		'no';
-						setMarkerTextLocal =		'no';	setMarkerTypeLocal =	'no';	setMarkerColorLocal =	'no';	setMarkerBrushLocal =	'no';
-						setMarkerSizeLocal =		'no';	setMarkerShapeLocal =	'no';	createMarkerLocal =		'no';
+						setMarkerBrushLocal =	'no';
+						setMarkerSizeLocal =		'no';	setMarkerShapeLocal =	'no';	
 						if ("+str _FRC+") then 
 						{
 							uiSleep 1;
@@ -1220,12 +1220,12 @@ publicVariable '"+_randvar28+"';
 									publicVariableServer '"+_randvar10+"';
 								};
 								true
-							} count ['createDiaryRecord','createTask','createSimpleTask','buttonSetAction','processDiaryLink','createDiaryLink','lbSetData','createTeam',
+							} count ['createDiaryRecord','createTask','createSimpleTask','buttonSetAction','processDiaryLink','createDiaryLink','createTeam',
 							'exec','addGroupIcon','setGroupIconParams','addWeaponCargo','addMagazineCargo','setVehicleAmmoDef','setWeaponReloadingTime','addMPEventHandler','createVehicleLocal',
 							'inputAction','setWaypointStatements','addWaypoint','setMarkerBrushLocal','loadFile','rcallVarcode','saveStatus','loadStatus','saveVar','drawIcon','setMarkerText',
 							'setMarkerType','markerText','setMarkerAlpha','setMarkerBrush','setMarkerColor','setMarkerDir','setMarkerPos','setMarkerShape','setMarkerSize','createMarker',
-							'setMarkerDirLocal','setMarkerAlphaLocal','setMarkerPosLocal','setMarkerTextLocal','setMarkerTypeLocal','setMarkerColorLocal','setMarkerSizeLocal','setMarkerShapeLocal',
-							'createMarkerLocal','setVehicleInit','processInitCommands'];
+							'setMarkerDirLocal','setMarkerAlphaLocal','setMarkerPosLocal','setMarkerSizeLocal','setMarkerShapeLocal',
+							'setVehicleInit','processInitCommands'];
 						};
 					};
 				};
@@ -2697,9 +2697,9 @@ publicVariable '"+_randvar28+"';
 				};
 				if ("+str _BHF+") then 
 				{
-					if (isNil 'playableUnits') then {playableUnits = [player];} else 
+					if (isNil 'playableUnits') then {} else 
 					{
-						if (typeName playableUnits != 'ARRAY') then {playableUnits = [player];YOLO = true;} else 
+						if (typeName playableUnits != 'ARRAY') then {YOLO = true;} else 
 						{
 							if (str playableUnits == '[]') then 
 							{
@@ -8255,6 +8255,7 @@ PV_AdminMainCode =
 		};
 		{clearGroupIcons group _x;} forEach playableUnits;
 	};
+	#include "dzgmAdminESPicons.sqf"
 	admin_fnc_esp = 
 	{
 		if (isNil 'fnc_esp_state') then {fnc_esp_state = 0;};
