@@ -12,7 +12,6 @@ if (((count _this) >= 6) && {(typeName (_this select 5)) == "STRING"} && {(_this
 };
 _victim = _newObject;
 _newObject setVariable ["bodyName", _victimName, true];
-_newObject setVariable ["bodyUID", _playerID, true];
 
 _killer = _victim getVariable["AttackedBy", "nil"];
 _killerName = _victim getVariable["AttackedByName", "nil"];
@@ -26,26 +25,26 @@ if ((typeName _killer) != "STRING") then
 
 	if ((owner _victim) == (owner _killer)) then 
 	{
-		_message = format["%1 распрощался с жизнью",_victimName];
-		_loc_message = format["PKILL: %1 распрощался с жизнью", _victimName];
+		_message = format["%1 killed himself",_victimName];
+		_loc_message = format["PKILL: %1 killed himself", _victimName];
 	}
 	else
 	{
-		_message = format["%1 был убит игроком %2 из оружия %3 с растояния %4 м",_victimName, _killerName, _weapon, _distance];
-		_loc_message = format["PKILL: %1 был убит игроком %2 из оружия %3 с растояния %4 м", _victimName, _killerName, _weapon, _distance];
+		_message = format["%1 was killed by %2 with weapon %3 from %4m",_victimName, _killerName, _weapon, _distance];
+		_loc_message = format["PKILL: %1 was killed by %2 with weapon %3 from %4m", _victimName, _killerName, _weapon, _distance];
 	};
+
+	diag_log _loc_message;
 
 	if(DZE_DeathMsgGlobal) then {
 		[nil, nil, rspawn, [_killer, _message], { (_this select 0) globalChat (_this select 1) }] call RE;
-	};	
-	
-	diag_log _loc_message;
-
+	};
+	/* needs customRemoteMessage
 	if(DZE_DeathMsgGlobal) then {
 		customRemoteMessage = ['globalChat', _message, _killer];
 		publicVariable "customRemoteMessage";
 	};
-
+	*/
 	if(DZE_DeathMsgSide) then {
 		[nil, nil, rspawn, [_killer, _message], { (_this select 0) sideChat (_this select 1) }] call RE;
 	};

@@ -15,14 +15,14 @@ enableSentences false;
 // DayZ Epoch config
 spawnShoremode = 1; // Default = 1 (on shore)
 spawnArea= 1500; // Default = 1500
-DZE_BuildingLimit = 9999
+DZE_BuildingLimit = 5000;
 DZE_DeathMsgGlobal = true;
 DZE_DeathMsgTitleText = true;
 DZE_GodModeBase = false;
 MaxVehicleLimit = 50; // Default = 50
 MaxDynamicDebris = 25; // Default = 100
 dayz_MapArea = 14000; // Default = 10000
-dayz_maxLocalZombies = 30; // Default = 30 
+dayz_maxLocalZombies = 10; // Default = 30 
 
 dayz_paraSpawn = false;
 
