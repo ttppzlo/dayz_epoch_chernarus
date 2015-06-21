@@ -22,7 +22,7 @@ DZE_GodModeBase = false;
 MaxVehicleLimit = 50; // Default = 50
 MaxDynamicDebris = 25; // Default = 100
 dayz_MapArea = 14000; // Default = 10000
-dayz_maxLocalZombies = 5; // Default = 30 
+dayz_maxLocalZombies = 10; // Default = 30 
 dayz_spawnselection = 1;
 dayz_paraSpawn = false;
 
@@ -83,7 +83,6 @@ if (!isDedicated) then {
 	//Run the player monitor
 	_id = player addEventHandler ["Respawn", {_id = [] spawn player_death;}];
 	_playerMonitor = 	[] execVM "\z\addons\dayz_code\system\player_monitor.sqf";	
-	execVM "dzgm\init.sqf";
 	execVM "spawn\start.sqf";
 	//Lights
 	//[false,12] execVM "\z\addons\dayz_code\compile\local_lights_init.sqf";

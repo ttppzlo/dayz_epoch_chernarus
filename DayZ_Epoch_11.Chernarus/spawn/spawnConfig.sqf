@@ -36,7 +36,7 @@ _spawnNearGroup = false; // Allow players to spawn near their group. Blocked if 
 _spawnNearPlot = false; // Allow players to spawn near their plot. Blocked if the player has a body within bodyCheck distance of their plot. Requires Plot4Life to work. 
 _spawnRadius = 800; // Distance around spawn to find a safe pos. Lower is closer to exact coordinates. Do not set too low or BIS_fnc_findSafePos may fail.
 _customBase = [
-	"0", // ebay
+	"76561198014219874", // ebay
 	"0",
 	"0"
 ];
@@ -82,8 +82,8 @@ _spawnPoints = switch (toLower worldName) do {
 			["Vybor",[3626,8976,0],0,0],
 			["Vyshnoye",[6587,6026,0],0,0],
 			["Zelenogorsk",[2692,5284,0],0,0],
-			["Bandit Base",[1607,7804,0],0,-10000],
-			["Hero Hideout",[12944,12767,0],0,10000]
+			["Bandit Base",[1607,7804,0],0,-2000],
+			["Hero Hideout",[12944,12767,0],0,5000]
 		]
 	};
 };

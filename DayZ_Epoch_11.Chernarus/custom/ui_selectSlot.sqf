@@ -1,11 +1,11 @@
-private ["_control","_button","_parent","_group","_pos","_item","_conf","_name","_cfgActions","_numActions","_height","_menu","_config","_type","_script","_outputOriented","_compile","_array","_outputClass","_outputType"];
+private ["_control","_button","_parent","_group","_pos","_item","_conf","_name","_cfgActions","_numActions","_height","_menu","_config","_type","_script","_outputOriented","_compile","_array","_outputClass","_outputType","_erc_cfgActions", "_erc_numActions"];
 disableSerialization;
 _control = 	_this select 0;
 _button =	_this select 1;
 _parent = 	findDisplay 106;
-
+ 
 //if ((time - dayzClickTime) < 1) exitWith {};
-if (!DZE_SelfTransfuse && ((gearSlotData _control) == "ItemBloodBag")) exitWith {};
+ 
 if (_button == 1) then {
 	//dayzClickTime = time;
 	_group = _parent displayCtrl 6902;
@@ -42,7 +42,7 @@ if (_button == 1) then {
 			/*
 				This flag means that the action is output oriented
 				the output class will then be transferred to the script
-				&& the type used for the name
+				and the type used for the name
 			*/			
 			_array = 	getArray	(_config >> "output");
 			_outputClass = _array select 0;
@@ -54,25 +54,28 @@ if (_button == 1) then {
 		_menu ctrlSetText format[_type,_name];
 		_menu ctrlSetEventHandler ["ButtonClick",_compile];
 	};
+	
+	// Add extra context menus
 	_erc_cfgActions = (missionConfigFile >> "ExtraRc" >> _item);
-   _erc_numActions = (count _erc_cfgActions);
-   if (isClass _erc_cfgActions) then {
-     for "_j" from 0 to (_erc_numActions - 1) do
-     {
-       _menu =  _parent displayCtrl (1600 + _j + _numActions);
-       _menu ctrlShow true;
-       _config =  (_erc_cfgActions select _j);
-       _text =  getText (_config >> "text");
-       _script =  getText (_config >> "script");
-       _height = _height + (0.025 * safezoneH);
-       uiNamespace setVariable ['uiControl', _control];
-       _menu ctrlSetText _text;
-       _menu ctrlSetEventHandler ["ButtonClick",_script];
-     };
-   };
+	_erc_numActions = (count _erc_cfgActions);
+	if (isClass _erc_cfgActions) then {
+		for "_j" from 0 to (_erc_numActions - 1) do 
+		{
+			_menu = 	_parent displayCtrl (1600 + _j + _numActions);
+			_menu ctrlShow true;
+			_config = 	(_erc_cfgActions select _j);
+			_text = 	getText	(_config >> "text");
+			_script = 	getText	(_config >> "script");
+			_height = _height + (0.025 * safezoneH);
+			uiNamespace setVariable ['uiControl', _control];
+			_menu ctrlSetText _text;
+			_menu ctrlSetEventHandler ["ButtonClick",_script];
+		};
+	};
+ 
 	_pos set [3,_height];
 	//hint format["Obj: %1 \nHeight: %2\nPos: %3",_item,_height,_grpPos];		
-
+ 
 	_group ctrlShow true;
 	ctrlSetFocus _group;
 	_group ctrlSetPosition _pos;
