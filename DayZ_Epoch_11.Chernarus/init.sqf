@@ -22,7 +22,7 @@ DZE_GodModeBase = false;
 MaxVehicleLimit = 50; // Default = 50
 MaxDynamicDebris = 25; // Default = 100
 dayz_MapArea = 14000; // Default = 10000
-dayz_maxLocalZombies = 10; // Default = 30 
+dayz_maxLocalZombies = 5; // Default = 30 
 dayz_spawnselection = 1;
 dayz_paraSpawn = false;
 
@@ -48,13 +48,13 @@ EpochEvents = [["any","any","any","any",30,"crash_spawner"],["any","any","any","
 dayz_fullMoonNights = true;
 
 //Load in compiled functions
-call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\variables.sqf";				//Initilize the Variables (IMPORTANT: Must happen very early)
+call compile preprocessFileLineNumbers "custom\variables.sqf";				//Initilize the Variables (IMPORTANT: Must happen very early)
 progressLoadingScreen 0.1;
 call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\publicEH.sqf";				//Initilize the publicVariable event handlers
 progressLoadingScreen 0.2;
 call compile preprocessFileLineNumbers "\z\addons\dayz_code\medical\setup_functions_med.sqf";	//Functions used by CLIENT for medical
 progressLoadingScreen 0.4;
-call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\compiles.sqf";	//Compile regular functions
+call compile preprocessFileLineNumbers "custom\compiles.sqf";	//Compile regular functions
 /*ZSC*/	
 call compile preprocessFileLineNumbers "ZSC\gold\ZSCinit.sqf";
 /*ZSC*/			
